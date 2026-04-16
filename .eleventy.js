@@ -62,7 +62,7 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src",
       output: "public",
-      layouts: "_layouts", // Correct: matches src/_layouts
+      layouts: "_layouts",
     },
   };
 };
