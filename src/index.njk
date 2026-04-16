@@ -104,30 +104,21 @@ templateEngineOverride: md, njk
   </div>
 </header>
 <main class="tdbc-container">
-  {% if collections.pages.length > 0 %}
-  <div class="tdbc-section tdbc-mb-lg">
-    <ul class="tdbc-column-container">
-      {%- for page in collections.pages | reverse -%}
-      <li class="tdbc-card">
-        <div class="tdbc-card__content">
-          <a href="{{ page.url }}" class="tdbc-card__title">{{ page.data.title }}</a>
-          <p>{{ page.data.description }}</p>
-        </div>
-      </li>
-      {%- endfor -%}
+  <section class="tdbc-section tdbc-mb-lg">
+    <h2>Main Sections</h2>
+    <ul class="tdbc-column-container" style="list-style: none; padding: 0;">
+      <li class="tdbc-card"><a href="/people/" class="tdbc-card__title">People</a><p>Meet our team members.</p></li>
+      <li class="tdbc-card"><a href="/research/" class="tdbc-card__title">Research</a><p>Explore our research topics and projects.</p></li>
+      <li class="tdbc-card"><a href="/publications/" class="tdbc-card__title">Publications</a><p>Read our latest publications.</p></li>
+      <li class="tdbc-card"><a href="/projects/" class="tdbc-card__title">Projects</a><p>Discover our ongoing and past projects.</p></li>
+      <li class="tdbc-card"><a href="/news/" class="tdbc-card__title">News</a><p>See our latest news and updates.</p></li>
     </ul>
+  </section>
+
+  <br><br>
+  <b>Funding:</b>
+  <div class="footer-images">
+      <img src="/img/TANGO.png" alt="TANGO">
+      <img src="/img/eu.png" alt="Funded by the European Union" class="footer-img">
   </div>
-  {% endif %}
-
-
-
-
-<br><br>
-<b>Funding:</b>
-<div class="footer-images">
-    <img src="/img/TANGO.png" alt="TANGO">
-
-<img src="/img/eu.png" alt="Funded by the European Union" class="footer-img">
-</div>
-
 </main>
