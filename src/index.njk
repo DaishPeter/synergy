@@ -131,19 +131,3 @@ templateEngineOverride: md, njk
 </div>
 
 </main>
-
-<script>
-  function updateCountdown() {
-    const deadline = document.getElementById('deadline');
-    const deadlineDate = new Date("2026-03-29");
-    const now = new Date();
-    const daysLeft = Math.ceil((deadlineDate - now) / (1000 * 60 * 60 * 24));
-    
-    document.getElementById('daysLeft').innerText = daysLeft > 0 ? `${daysLeft} days left` : "Due";
-    
-    if (daysLeft < 0)
-      deadline.style.textDecoration = "line-through";
-  }
-
-  updateCountdown();
-</script>
