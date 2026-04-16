@@ -10,22 +10,12 @@ const markdownItAnchor = require("markdown-it-anchor");
 const markdownItDeflist = require("markdown-it-deflist");
 
 module.exports = function (eleventyConfig) {
-  let markdownLib = markdownIt().use(markdownItDeflist);
-  eleventyConfig.setLibrary("md", markdownLib);
-
-  return {
-    dir: {
-      input: "src",
-      output: "dist",
-    },
-  };
-};
-
-module.exports = function (eleventyConfig) {
+  // Plugins
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(eleventySass);
 
+  // Passthroughs
   eleventyConfig.addPassthroughCopy("./src/fonts");
   eleventyConfig.addPassthroughCopy("./src/img");
   eleventyConfig.addPassthroughCopy("./src/favicon.png");
@@ -34,21 +24,21 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/ceur-ws/*.png");
   eleventyConfig.addPassthroughCopy("./src/papers/*.pdf");
 
+  // Shortcodes
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
+  // Collections
   eleventyConfig.addCollection("pages2024", function (collectionApi) {
     return collectionApi.getFilteredByGlob("./src/2024/pages/*.md");
   });
   eleventyConfig.addCollection("pages2025", function (collectionApi) {
     return collectionApi.getFilteredByGlob("./src/2025/pages/*.md");
   });
-
-
-    // Add this: Automatically tag files in src/people as 'people'
   eleventyConfig.addCollection("people", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/people/*.md");
   });
-  /* Markdown Overrides */
+
+  // Markdown Library
   let markdownLibrary = markdownIt({
     html: true,
   })
@@ -62,7 +52,7 @@ module.exports = function (eleventyConfig) {
         slugify(str, {
           lower: true,
           strict: true,
-          remove: /["]/g,
+          remove: /[\""]/g,
         }),
     })
     .use(markdownItDeflist);
@@ -75,6 +65,4 @@ module.exports = function (eleventyConfig) {
       layouts: "_layouts",
     },
   };
-
-  
 };
