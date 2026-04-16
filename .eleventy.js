@@ -43,11 +43,6 @@ module.exports = function (eleventyConfig) {
     return collectionApi.getFilteredByGlob("./src/2025/pages/*.md");
   });
 
-
-    // Add this: Automatically tag files in src/people as 'people'
-  eleventyConfig.addCollection("people", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/people/*.md");
-  });
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
     html: true,
@@ -75,6 +70,4 @@ module.exports = function (eleventyConfig) {
       layouts: "_layouts",
     },
   };
-
-  
 };
